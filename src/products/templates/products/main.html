@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}home{% endblock title %}
+
+{% block content %}
+    <div>
+        {% comment %} if no records found display an error message {% endcomment %}
+        {% if error_message %}
+            {{ error_message}}
+        {% endif %}
+
+        <form action="" method="POST" class="ui form">
+        {% csrf_token %}
+            <div class="field">
+                <label>Choose chart type: </label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="sales">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">------</div>
+                    <div class="menu">
+                        <div class="item" value="bar">Bar Plot</div>
+                        <div class="item" value="line">Line Plot</div>
+                        <div class="item" value="count">Count Plot</div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="two fields">
+                  <div class="field">
+                    <label>Date from: </label>
+                    <input type="date" name="date_from">
+                  </div>
+                  <div class="field">
+                    <label>Date to: </label>
+                    <input type="date" name="date_to">
+                  </div>
+                </div>
+            </div>
+            <button class='ui primary button' type='submit'>Select</button>
+        </form>
+    </div>
+{% endblock content %}
+    
+    
