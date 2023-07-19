@@ -9,6 +9,13 @@
             {{ error_message}}
         {% endif %}
 
+        {% if request.POST %}
+            {% if graph %}
+                <h1>h1</h1>
+                <img src="data:image/png;base64, {{ graph | safe }}" >
+            {% endif %}   
+        {% endif %}
+            
         <form action="" method="POST" class="ui form">
         {% csrf_token %}
             <div class="field">
